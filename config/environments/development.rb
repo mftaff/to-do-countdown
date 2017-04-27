@@ -40,5 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } # this is the stock line
-  config.action_mailer.default_url_options = { host: 'https://to-do-countdown-mftaff.c9users.io/', port: 8080 } # this is the line for cloud9
+  config.action_mailer.default_url_options = { host: 'https://to-do-countdown-mftaff.c9users.io' } # this is the line for cloud9
 end
