@@ -18,3 +18,5 @@
 
 # Ignore application configuration for private keys etc.
 /config/application.yml
+# Ignore application configuration
+/config/application.yml
