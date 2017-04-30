@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-
   devise_for :users
   resources :users, only: [:show]
+  resources :tasks, only: [:create]
   
   authenticated :user do
     root :to => 'users#show', :as => :authenticated_root

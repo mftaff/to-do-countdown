@@ -2,3 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <h4>Welcome <i><%= current_user.email %>!</i></h4>
+
+<div><%= render partial: 'tasks/index', locals: { tasks: @tasks } %></div>
+
+<div><%= render partial: 'tasks/form', locals: { task: @task } %></div>
