@@ -1,0 +1,11 @@
+<% if @task.destroyed? %>
+    $("#task-<%=@task.id%>").fadeOut(400, function() {
+        $(".alert").hide()
+        $(".ajax-flash").prepend("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button>'Good job! Task completed and removed from list!'</div>");
+        $(".alert.alert-success").delay(6000).fadeOut();
+    });
+<% else %>
+    $(".alert").hide()
+    $(".ajax-flash").prepend("<div class='alert alert-warning'><button type='button' class='close' data-dismiss='alert'>&times;</button>'An issue occured while trying to delete completed task...'</div>");
+    $(".alert.alert-warning").delay(6000).fadeOut();
+<% end %>

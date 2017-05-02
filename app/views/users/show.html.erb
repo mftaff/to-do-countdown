@@ -1,8 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!--<h1>Users#show</h1>-->
+<!--<p>Find me in app/views/users/show.html.erb</p>-->
 
 <h4>Welcome <i><%= current_user.email %>!</i></h4>
 
-<div><%= render partial: 'tasks/index', locals: { tasks: @tasks } %></div>
+<table class="table table-hover">
+    <th>Task</th>
+    <th>Time remaining</th>
+    <th></th>
+    <div class="tasks"><%= render @tasks %></div>
+    <div class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></div>
+</table>
 
-<div><%= render partial: 'tasks/form', locals: { task: @task } %></div>

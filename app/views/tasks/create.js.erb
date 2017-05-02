@@ -1,0 +1,7 @@
+<% if @task.valid? %>
+    <% Rails.logger.info ">>>>> In if @task.valid" %>
+    $(".tasks").prepend("<%= escape_javascript(render(@task)) %>");
+    $(".new-task").html("<%= escape_javascript(render partial: 'tasks/form', locals: { task: @new_task }) %>");
+<% else %>
+    $(".new-task").html("<%= escape_javascript(render partial: 'tasks/form', locals: { task: @task }) %>");
+<% end %>
