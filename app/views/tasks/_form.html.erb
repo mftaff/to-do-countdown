@@ -1,14 +1,6 @@
 <%= form_for [task], remote: false do |f| %>
-    <% if task.errors[:name].any? %>
-        <div class="alert alert-danger">
-            <%= "#{task.errors[:name].first}" %>
-        </div>
-    <% end %>
-
     <td class="form-group">
-        <%= form_group_tag(task.errors[:name]) do %> <!-- form_group_tag() is in application_helper -->
-            <%= f.text_field :name, class: 'form-control', placeholder: "Add new task..." %>
-        <% end %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Add new task..." %>
     </td>
     <td></td>
     <td class="form-group">

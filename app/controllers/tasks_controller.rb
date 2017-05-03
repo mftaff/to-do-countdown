@@ -10,6 +10,7 @@ class TasksController < ApplicationController
         end
         redirect_to root_path
         
+        # @task.save
         # respond_to do |format|
         #     format.html { redirect_to root_path }
         #     format.js
