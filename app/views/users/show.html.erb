@@ -7,8 +7,9 @@
     <tr id="heading">
         <th id="task-count">Showing <%= pluralize(@tasks.count, "Task").split.insert(1, "non-completed").join ' ' %></th>
         <th>Time remaining</th>
-        <th></th>
+        <th><button class="btn-xs btn-primary" type="button" data-toggle="collapse" data-target="tbody#expired-tasks" aria-expanded="false" aria-controls="collapseExample">Toggle Expired Tasks</button></th>
     </tr>
     <%= render @tasks %>
+    <tbody class="collapse" id="expired-tasks"><%= render @expired_tasks %></tbody>
     <tr class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></tr>
 </table>
