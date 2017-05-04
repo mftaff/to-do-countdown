@@ -1,5 +1,5 @@
 <tr id="task-<%= task.id %>">
     <td><%= task.name %></td>
-    <%= time_factor(distance_of_time_in_words(Time.now, task.created_at + 7.days), task.created_at ) %>
+    <%= time_factor(distance_of_time_in_words(Time.now, task.created_at + 7.days), task ) %>
     <td><%= link_to "", task, method: :delete, remote: true, class: 'glyphicon glyphicon-ok-circle' %></td>
 </tr>

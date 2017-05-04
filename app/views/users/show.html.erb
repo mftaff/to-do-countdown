@@ -1,13 +1,12 @@
-<!--<h1>Users#show</h1>-->
-<!--<p>Find me in app/views/users/show.html.erb</p>-->
+<div id="toggle-expired">Show Expired Tasks</div>
 
 <h4>Welcome <i><%= current_user.email %>!</i></h4>
 
 <table class="table table-hover">
     <tr id="heading">
-        <th id="task-count">Showing <%= pluralize(@tasks.count, "Task").split.insert(1, "non-completed").join ' ' %></th>
+        <th id="task-count">You have <%= pluralize(@tasks.count, "Task").split.insert(1, "active").join ' ' %></th>
         <th>Time remaining</th>
-        <th><button class="btn-xs btn-primary" type="button" data-toggle="collapse" data-target="tbody#expired-tasks" aria-expanded="false" aria-controls="collapseExample">Toggle Expired Tasks</button></th>
+        <th></th>
     </tr>
     <%= render @tasks %>
     <tbody class="collapse" id="expired-tasks"><%= render @expired_tasks %></tbody>

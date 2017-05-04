@@ -1,6 +1,6 @@
 <% if @task.destroyed? %>
     $("#task-<%=@task.id%>").fadeOut(400, function() {
-        $('th#task-count').html("Showing <%= pluralize(current_user.tasks.unexpired.count, "Task").split.insert(1, "non-completed").join ' ' %>");
+        $('th#task-count').html("You have <%= pluralize(current_user.tasks.unexpired.count, "Task").split.insert(1, "active").join ' ' %>");
         $(".flash").html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:notice] %></div>");
     });
 <% else %>
