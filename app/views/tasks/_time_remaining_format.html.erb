@@ -1,8 +1,8 @@
 <% t = time.split.last %>
+<% class_name = "" %>
 <% if t == "day" || t == "hours" %>
-    <td class="bg-warning"><%= time %></td>
+    <% class_name = "bg-warning" %>
 <% elsif t == "hour" || t == "minute" || t == "minutes" %>
-    <td class="bg-danger"><%= time %></td>
-<% else %>
-    <td><%= time %></td>
+    <% class_name = "bg-danger" %>
 <% end %>
+<td class="<%= class_name%>"><%= time %></td>

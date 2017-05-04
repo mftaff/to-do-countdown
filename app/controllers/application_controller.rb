@@ -4,4 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_action :authenticate_user!
+  
+  def log_info(data)
+      if data.is_a? Array
+          data.each do |d|
+              Rails.logger.info ">>>>>>> #{d}"
+          end
+      else
+          Rails.logger.info ">>>>>>> #{data}"
+      end
+  end
+  helper_method :log_info
 end
