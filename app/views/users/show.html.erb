@@ -5,7 +5,7 @@
 
 <table class="table table-hover">
     <tr id="heading">
-        <th>Task</th>
+        <th id="task-count">Showing <%= pluralize(@tasks.count, "Task").split.insert(1, "non-completed").join ' ' %></th>
         <th>Time remaining</th>
         <th></th>
     </tr>

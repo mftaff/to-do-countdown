@@ -1,6 +1,7 @@
 <% if @task.valid? %>
     $("tr#heading").after("<%= escape_javascript(render(@task)) %>");
     $('#task_name').val("");
+    $('th#task-count').html("Showing <%= pluralize(Task.where(user: current_user).count, "Task").split.insert(1, "non-completed").join ' ' %>");
     $(".flash").html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:notice] %></div>");
 <% else %>
     $('#task_name').val("");
