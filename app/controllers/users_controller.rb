@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @task = Task.new # can I nest this under current_user?
+    @task = Task.new
     @tasks = Task.where(user: current_user)
   end
 end

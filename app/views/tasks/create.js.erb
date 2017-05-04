@@ -1,7 +1,9 @@
 <% if @task.valid? %>
-    <% Rails.logger.info ">>>>> In if @task.valid" %>
-    $(".tasks").prepend("<%= escape_javascript(render(@task)) %>");
-    $(".new-task").html("<%= escape_javascript(render partial: 'tasks/form', locals: { task: @new_task }) %>");
+    $("tr#heading").after("<%= escape_javascript(render(@task)) %>");
+    $('#task_name').val("");
+    $(".flash").html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:notice] %></div>");
 <% else %>
-    $(".new-task").html("<%= escape_javascript(render partial: 'tasks/form', locals: { task: @task }) %>");
+    $('#task_name').val("");
+    $('.flash').html("<div class='alert alert-warning'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:alert] %></div>");
 <% end %>
+

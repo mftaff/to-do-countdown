@@ -4,10 +4,11 @@
 <h4>Welcome <i><%= current_user.email %>!</i></h4>
 
 <table class="table table-hover">
-    <th>Task</th>
-    <th>Time remaining</th>
-    <th></th>
-    <div class="tasks"><%= render @tasks %></div>
-    <div class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></div>
+    <tr id="heading">
+        <th>Task</th>
+        <th>Time remaining</th>
+        <th></th>
+    </tr>
+    <%= render @tasks %>
+    <tr class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></tr>
 </table>
-

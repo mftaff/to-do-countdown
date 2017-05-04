@@ -1,8 +1,11 @@
 module ApplicationHelper
-    # def form_group_tag(errors, &block)
-    #     css_class = 'form-group'
-    #     css_class << ' has-error' if errors.any?
-        
-    #     content_tag :div, capture(&block), class: css_class
-    # end  
+    def log_info(data)
+        if data.is_a? Array
+            data.each do |d|
+                Rails.logger.info ">>>>>>> #{d}"
+            end
+        else
+            Rails.logger.info ">>>>>>> #{data}"
+        end
+    end
 end

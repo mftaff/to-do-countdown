@@ -1,26 +1,32 @@
 class TasksController < ApplicationController
     def create
         @task = current_user.tasks.new(task_params)
-        # @new_task = Task.new
         
         if @task.save
-            flash[:notice] = "New task added!"
-        else 
-            flash.now[:alert] = "There was an error saving your task. Task not saved."
+            flash.now[:notice] = "#{@task.name} added to To-Do list!"
+        else
+            if @task.errors.any?
+                flash.now[:alert] = "Task not saved. #{@task.errors.full_messages.inject { | err_str, msg | err_str + msg }}"  
+            else
+                flash.now[:alert] = "Something went wrong! Your task was not saved... "
+            end
         end
-        redirect_to root_path
         
-        # @task.save
-        # respond_to do |format|
-        #     format.html { redirect_to root_path }
-        #     format.js
-        # end
+        respond_to do |format|
+            format.html { redirect_to root_path }
+            format.js
+        end
     end
     
     def destroy
         @task = Task.find(params[:id])
         
-        @task.destroy
+        if @task.destroy
+            flash.now[:notice] = "Nice work! Task completed and removed from list!"
+        else 
+            flash.now[:alert] = "An issue occured while trying to delete completed task..."
+        end
+        
         respond_to do |format|
             format.html { redirect_to root_path }
             format.js
