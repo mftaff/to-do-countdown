@@ -6,7 +6,7 @@ class TasksController < ApplicationController
             flash.now[:notice] = "#{@task.name} added to To-Do list!"
         else
             if @task.errors.any?
-                flash.now[:alert] = "Task not saved. #{@task.errors.full_messages.inject { | err_str, msg | err_str + msg }}"  
+                flash.now[:alert] = "Task not saved. #{@task.errors.full_messages.join '. ' }."  
             else
                 flash.now[:alert] = "Something went wrong! Your task was not saved... "
             end
@@ -37,6 +37,6 @@ class TasksController < ApplicationController
     private
     
     def task_params
-        params.require(:task).permit(:name)
+        params.require(:task).permit(:name, :expires_at)
     end
 end

@@ -21,7 +21,6 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'devise'
-gem 'rufus-scheduler', '~> 3.4'
 
 group :development, :test do
   gem 'byebug'

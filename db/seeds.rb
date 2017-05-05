@@ -26,11 +26,17 @@ users = User.all
     task.update_attribute(:created_at, rand(0.minutes .. 5.days).ago)
 end
 
-test_task = Task.create!(
-    name: "test for time remaining",
+ten_min_task = Task.create!(
+    name: "Should be ten minutes remaining",
     user: User.last
     )
-test_task.update_attribute(:created_at, (7.days-5.minutes).ago)
+ten_min_task.update_attribute(:expires_at, Time.now+10.minutes)
+
+expired_test_task = Task.create!(
+    name: "I am already expired!!",
+    user: User.last
+    )
+expired_test_task.update_attribute(:expires_at, Time.now)
 
 puts "Seed Complete"
 puts "#{User.count} users created"
