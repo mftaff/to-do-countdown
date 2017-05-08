@@ -3,7 +3,7 @@ class TasksController < ApplicationController
         @task = current_user.tasks.new(task_params)
         
         if @task.save
-            flash.now[:notice] = "#{@task.name} added to To-Do list!"
+            flash.now[:notice] = "\"#{@task.name}\" added to To-Do list!"
         else
             if @task.errors.any?
                 flash.now[:alert] = "Task not saved. #{@task.errors.full_messages.join '. ' }."  

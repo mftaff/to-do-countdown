@@ -1,4 +1,4 @@
-<div id="toggle-expired">Show Expired Tasks</div>
+<%= expired_task_button %>
 
 <h4>Welcome <i><%= current_user.email %>!</i></h4>
 
@@ -6,9 +6,9 @@
     <tr id="heading">
         <th id="task-count">You have <%= pluralize(@tasks.count, "Task").split.insert(1, "active").join ' ' %></th>
         <th>Time remaining</th>
-        <th></th>
+        <th>Completed yet?</th>
     </tr>
-    <%= render @tasks %>
+    <tbody class="all-tasks"><%= render @tasks %></tbody>
     <tbody class="collapse" id="expired-tasks"><%= render @expired_tasks %></tbody>
     <tr class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></tr>
 </table>

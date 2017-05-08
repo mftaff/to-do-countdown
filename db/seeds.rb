@@ -23,11 +23,11 @@ users = User.all
         name: Faker::Company.bs,
         user: users.sample
     )
-    task.update_attribute(:created_at, rand(0.minutes .. 5.days).ago)
+    task.update_attribute(:expires_at, Time.now + rand(1.day .. 7.days))
 end
 
 ten_min_task = Task.create!(
-    name: "Should be ten minutes remaining",
+    name: "CALL LEVI!!! Should be ten minutes remaining",
     user: User.last
     )
 ten_min_task.update_attribute(:expires_at, Time.now+10.minutes)

@@ -14,4 +14,8 @@ module TasksHelper
             "<td class='bg-danger'>EXPIRED!</td>".html_safe
         end
     end
+    
+    def expired_task_button
+        "<div id='toggle-expired'>Show Expired Tasks</div>".html_safe unless @expired_tasks.blank?
+    end
 end
