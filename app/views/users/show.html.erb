@@ -6,9 +6,13 @@
     <tr id="heading">
         <th id="task-count">You have <%= pluralize(@tasks.count, "Task").split.insert(1, "active").join ' ' %></th>
         <th>Time remaining</th>
-        <th>Completed yet?</th>
+        <% if @user == current_user %>
+            <th>Completed yet?</th>
+        <% end %>
     </tr>
     <tbody class="all-tasks"><%= render @tasks %></tbody>
     <tbody class="collapse" id="expired-tasks"><%= render @expired_tasks %></tbody>
-    <tr class="new-task"><%= render partial: 'tasks/form', locals: { task: @task } %></tr>
+    <% if @user == current_user %>
+        <%= render partial: 'tasks/form', locals: { task: @task } %>
+    <% end %>
 </table>

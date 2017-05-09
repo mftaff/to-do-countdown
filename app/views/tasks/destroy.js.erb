@@ -3,7 +3,7 @@
         $('th#task-count').html("You have <%= pluralize(current_user.tasks.unexpired.count, "Task").split.insert(1, "active").join ' ' %>");
         $(".flash").html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:notice] %></div>");
     });
-    <% if @expired_tasks.blank? %>
+    <% if current_user.tasks.expired.blank? %>
         $('#toggle-expired').hide();
     <% end %>
 <% else %>

@@ -2,6 +2,11 @@
     <% if user != current_user %>
         <tr>
             <td><%= user.email %></td>
+            <td>
+                <% if current_user.friends.include? user %>
+                    <%= link_to "View To-Do's", user %>
+                <% end %>
+            </td>
             <td><%= render partial: 'users/friend_status', locals: {user: user} %></td>
         </tr>
     <% end %>

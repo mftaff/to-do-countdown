@@ -5,8 +5,19 @@ class UsersController < ApplicationController
   
   def show
     @task = Task.new
-    @tasks = current_user.tasks.unexpired
-    @expired_tasks = current_user.tasks.expired
+    @user = params[:id].present? ? User.find(params[:id]) : current_user
+
+    unless current_user.friends.include?(@user) || @user == current_user
+      flash[:alert] = "You need to be friends to view other peoples's TO-DO lists.."
+      begin
+        redirect_to :back and return
+      rescue
+        redirect_to root_path
+      end
+    end
+    
+    @tasks = @user.tasks.unexpired
+    @expired_tasks = @user.tasks.expired
   end
   
   def send_friend_request # send a request to a diff user

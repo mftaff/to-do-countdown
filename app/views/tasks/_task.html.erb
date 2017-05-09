@@ -2,5 +2,7 @@
     <td class="expires_at" style="display: none"><%= task.expires_at.to_s %></td>
     <td><%= task.name %></td>
     <%= time_factor(distance_of_time_in_words(Time.now, task.expires_at), task ) %>
-    <td><%= link_to "", task, method: :delete, remote: true, class: 'glyphicon glyphicon-ok-circle' %></td>
+    <% if task.user == current_user %>
+        <td><%= link_to "", task, method: :delete, remote: true, class: 'glyphicon glyphicon-ok-circle' %></td>
+    <% end %>
 </tr>
