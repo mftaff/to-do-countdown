@@ -1,7 +1,7 @@
 <% users.each do |user| %>
     <% if user != current_user %>
         <tr>
-            <td><%= user.email %></td>
+            <td><%= user.username %></td>
             <td>
                 <% if current_user.friends.include? user %>
                     <%= link_to "View To-Do's", user %>

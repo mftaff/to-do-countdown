@@ -1,6 +1,9 @@
 4.times do
+    seed_name = Faker::Name.first_name.downcase + rand(100..999).to_s
+
     user = User.new(
-        email: Faker::Internet.safe_email,
+        username: seed_name,
+        email: Faker::Internet.safe_email(seed_name),
         password: 'teatea',
         password_confirmation: 'teatea'
     )
@@ -9,6 +12,7 @@
 end
 
 admin_user = User.new(
+        username: "admin_user",
         email: 'admin@user.test',
         password: 'teatea',
         password_confirmation: 'teatea'
@@ -27,7 +31,7 @@ users = User.all
 end
 
 ten_min_task = Task.create!(
-    name: "CALL LEVI!!! Should be ten minutes remaining",
+    name: "Should be ten minutes remaining",
     user: User.last
     )
 ten_min_task.update_attribute(:expires_at, Time.now+10.minutes)

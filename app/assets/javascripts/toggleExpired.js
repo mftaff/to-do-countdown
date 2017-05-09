@@ -1,5 +1,4 @@
 $( document ).on('turbolinks:load', function() {
-    console.log("ready!");
     $('#toggle-expired').click(function(){
         $('#expired-tasks').toggle(100, function(){
             if($('#toggle-expired').text() === "Show Expired Tasks") {
