@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   resources :tasks, only: [:create, :destroy]
+  
+  get 'send_friend_request', to: 'users#send_friend_request'
+  get 'accept_friend_request', to: 'users#accept_friend_request'
+  get 'decline_friend_request', to: 'users#decline_friend_request'
+  get 'unfriend', to: 'users#unfriend'
   
   authenticated :user do
     root :to => 'users#show', :as => :authenticated_root

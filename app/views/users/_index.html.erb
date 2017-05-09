@@ -1,0 +1,8 @@
+<% users.each do |user| %>
+    <% if user != current_user %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= render partial: 'users/friend_status', locals: {user: user} %></td>
+        </tr>
+    <% end %>
+<% end %>

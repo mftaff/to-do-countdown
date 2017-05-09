@@ -21,6 +21,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'devise'
+gem 'has_friendship'
 
 group :development, :test do
   gem 'byebug'
