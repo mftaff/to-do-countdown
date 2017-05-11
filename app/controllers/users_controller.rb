@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    log_info params.inspect
+    # @users = User.all
+    @friends = User.all.map { |user| !isnt_friend(user) ? user : nil }.compact
+    
+    if params[:search].length >= 3
+      @searched_users = User.search(params[:search]).map { |user| isnt_friend(user) ? user : nil }.compact
+    end
   end
   
   def show
@@ -48,5 +54,10 @@ class UsersController < ApplicationController
   
   def get_target_user
     @user = User.find(params[:target_user])
+  end
+  
+  # returns true if user is not a pending/requested or friend of current_user
+  def isnt_friend(user)
+    current_user.friends.include?(user) || current_user.requested_friends.include?(user) || current_user.pending_friends.include?(user) ? false : true
   end
 end

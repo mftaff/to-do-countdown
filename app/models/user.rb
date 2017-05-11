@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
     end
   end
  
+  # overwrites devise's default <find_for_database_authentication> to include username 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -28,5 +29,10 @@ class User < ActiveRecord::Base
       conditions[:email].downcase! if conditions[:email]
       where(conditions.to_hash).first
     end
+  end
+  
+  # gives this model search functionality
+  def self.search(search)
+    where("username LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
   end
 end
