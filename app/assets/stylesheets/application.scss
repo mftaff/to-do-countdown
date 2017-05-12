@@ -26,4 +26,50 @@ body {
     &.users {
         background-image: url("bg-friends-loop.jpg");
     }
+    
+    & a:hover {
+        text-decoration: none;
+    }
+}
+
+.container {
+    padding: 0;
+}
+
+.nav {
+    background: rgba(184, 224, 255, 0.7);
+    
+    & li a {
+      color: black;
+      
+      &:focus, &:hover {
+          color: #fffafa;
+          background-color: #5f5f5f;
+          border-color: #000000 #000000 #797979;
+      }
+    }
+}
+
+.user-ctrl {
+    float: right;
+    margin-right: 1em;
+    margin-top: 0.85em;
+    width: 106px;
+    
+    & h5 {
+        float: left;
+        margin: 0;
+        padding-right: 5px;
+    }
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: rgba(184, 224, 255, 0.7);
+}
+
+ul.dropdown-menu.menu-list {
+    min-width: 0;
+    background: rgba(184, 224, 255, 0.7);
+    margin-top: 0.75em;
+    border-top: none;
 }
