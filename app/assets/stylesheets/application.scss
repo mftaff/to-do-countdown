@@ -19,5 +19,11 @@
 
 body {
     background: #99d2ff;
-    background-image: url("bg.jpg");
+    background-image: url("bg-loop.jpg");
+    background-size: 400px;
+    background-repeat: repeat;
+    
+    &.users {
+        background-image: url("bg-friends-loop.jpg");
+    }
 }

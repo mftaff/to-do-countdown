@@ -1,0 +1,4 @@
+<% if @searched_users %>
+    $('#search-results').html("<tr><th><%= flash.now[:notice] %></th><th></th><th></th></tr>");
+    $('#search-results').append("<%= escape_javascript(render partial: 'index', locals: { users: @searched_users }) %>");
+<% end %> 

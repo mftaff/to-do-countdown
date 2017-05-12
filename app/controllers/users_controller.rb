@@ -1,11 +1,20 @@
 class UsersController < ApplicationController
+  before_action :set_body_class, only: [:index]
+  
   def index
-    log_info params.inspect
-    # @users = User.all
     @friends = User.all.map { |user| !isnt_friend(user) ? user : nil }.compact
     
-    if params[:search].length >= 3
+    if params[:search].present? && params[:search].length >= 3
       @searched_users = User.search(params[:search]).map { |user| isnt_friend(user) ? user : nil }.compact
+
+      if @searched_users
+        flash.now[:notice] = "Showing #{@searched_users.count} #{"result".pluralize(@searched_users.count)} for \" #{params[:search]} \""
+      end
+    end
+    
+    respond_to do |format|
+      format.html 
+      format.js
     end
   end
   
@@ -58,6 +67,10 @@ class UsersController < ApplicationController
   
   # returns true if user is not a pending/requested or friend of current_user
   def isnt_friend(user)
-    current_user.friends.include?(user) || current_user.requested_friends.include?(user) || current_user.pending_friends.include?(user) ? false : true
+    current_user.friends.include?(user) || current_user.requested_friends.include?(user) || current_user.pending_friends.include?(user) || current_user == user ? false : true
+  end
+  
+  def set_body_class
+    @body_class = "users"
   end
 end
