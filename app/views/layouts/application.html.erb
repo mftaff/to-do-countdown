@@ -30,6 +30,11 @@
           <% end %>
         </div>
       </ul>
+      
+      <header>
+        <h2>TO~DO<small>countdown</small></h2>
+        <p>Your Task list decluttered.</p>
+      </header>
     
       <div class="flash">
         <% if flash[:notice] %>
@@ -46,6 +51,9 @@
       </div>
   
       <%= yield %>
-    </div>
+      
+      <!--<footer>-->
+      <!--  <p>TO~DO<small>countdown</small></p>  -->
+      <!--</footer>-->
 </body>
 </html>

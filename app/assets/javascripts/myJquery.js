@@ -35,6 +35,7 @@ $(document).ready( function() {
     
     $('#toggle-expired').click(function(){
         $('#expired-tasks').toggle(100, function(){
+            $('#toggle-expired').toggleClass('redded');
             if($('#toggle-expired').text() === "Show Expired Tasks") {
                 $('#toggle-expired').text('Hide Expired Tasks');
             } else {

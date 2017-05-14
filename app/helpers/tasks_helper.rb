@@ -5,13 +5,13 @@ module TasksHelper
         
         if task.expires_at > Time.now
             if t == "day" || t == "hours"
-                class_name = "bg-warning" 
+                class_name = " expire-soon" 
             elsif t == "hour" || t == "minute" || t == "minutes" 
-                class_name = "bg-danger"
+                class_name = " expire-now"
             end
-            "<td class='#{class_name}'>#{time_left}</td>".html_safe
+            "<td class='time-remaining#{class_name}'>#{time_left}</td>".html_safe
         else
-            "<td class='bg-danger'>EXPIRED!</td>".html_safe
+            "<td class='time-remaining expire-now'>EXPIRED!</td>".html_safe
         end
     end
     

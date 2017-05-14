@@ -34,6 +34,9 @@ body {
 
 .container {
     padding: 0;
+    // min-height: 100%;
+    // border-left: 2px double #9cc8eb;
+    // border-right: 2px double #9cc8eb;
 }
 
 .nav {
@@ -74,14 +77,130 @@ ul.dropdown-menu.menu-list {
     border-top: none;
 }
 
+// Find a way to save the flash box's space, so the whole page doesn't jump.
+.flash {
+}
+
+header {
+    color: #7d7153;
+    text-align: center;
+    background-color: rgba(142, 142, 142, 0.6);
+}
+
+div#toggle-expired {
+    color: #398439;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+div#toggle-expired.redded {
+    color: #e60000 !important;
+}
+
+div#toggle-expired:hover, div#toggle-expired:focus {
+    cursor: pointer;
+}
+
 .table {
     background: rgba(175, 175, 175, 0.3);
     margin: 5px;
     width: 97%;
     margin-right: auto;
     margin-left: auto;
+    
+    & thead  tr  th, & thead tr td, & tbody tr th, & tbody tr td, & tfoot tr th, & tfoot tr td {
+        border-top: none;
+    }
 }
 
-#heading {
-    background: rgba(175, 175, 175, 0.4);
+#heading, .new-task {
+    background-color: rgba(123, 161, 191, 0.5);
 }
+
+.task:nth-child(even) {
+    background-color: rgba(175, 175, 175, 0.3);
+}
+
+tbody {
+    
+    & tr.task:hover {
+        background-color: transparent;
+    }
+    
+    & tr.task:nth-child(even):hover {
+       background-color: rgba(175, 175, 175, 0.3);
+    }
+    
+    & tr.new-task:hover  {
+       background-color: rgba(123, 161, 191, 0.5);;
+    }
+    
+    & tr.task:hover, & tr.task:nth-child(even):hover {
+        opacity: 0.8;
+    }
+    
+    &#expired-tasks {
+        border-top: 6px double #8cb2d0;
+    }
+}
+
+th {
+    
+    &.task-desc {
+        width: 70%;    
+    }
+    
+    &.time-rema {
+        width: 20%; 
+        text-align: center;
+    }
+    
+    &.compl-yet {
+        width: 10%;
+    }
+}
+
+td.time-remaining {
+    text-align: center;
+}
+
+td.expire-soon {
+    color: orange;
+    text-shadow: 1px 1px 2px #6f4800, 0 0 50px orange, 0 0 5px orange;
+    // background-color: rgba(255, 165, 0, .1);
+}
+
+td.expire-now {
+    color: red;
+    text-shadow: 1px 1px 2px #a70000, 0 0 50px red, 0 0 5px red;
+    // background-color: rgba(255, 0, 0, .1);
+}
+
+a.glyphicon.glyphicon-ok-circle {
+    left: 30%;
+}
+
+input#task_expires_at {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+// footer {
+//     position: absolute;
+//     bottom: 0;
+//     height: 2em;
+//     width: 100%;
+//     background: rgba(184, 224, 255, 0.7);
+//     text-align: center;
+//     color: #7d7153;
+// }

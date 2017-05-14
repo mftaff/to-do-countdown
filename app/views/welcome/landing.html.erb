@@ -1,2 +1,9 @@
-<h1>Welcome#landing</h1>
-<p>Find me in app/views/welcome/landing.html.erb</p>
+<div class="jumbotron about">
+    <h3>Hi</h3>
+    <p>Here you will find a task-list optimized for your needs.</p>
+    <p>Here are some of the things that this app features:</p>
+    <p>- Self-cleaning to do lists</p>
+    <p>- Friend system</p>
+    <br><P>Already have an account? <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %></P>
+    <p>New here? <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %></p>
+</div>
