@@ -15,18 +15,16 @@ var delay = (function(){
 
 $(document).ready( function() {
     $('#search').keyup( function() {
-        var $searchLen = $('#search').val().length;
-        if ( $searchLen >= 3 ) {
-            delay(function(){
-              $('#search-form').submit();
-            }, 200 );
-        } else if ( $searchLen === 0 ) {
-            clearSearch();   
-        } else if ( $searchLen > 0 && $searchLen < 3 ) {
-            delay(function(){
-                $('#search-results').html("<tr><th>Showing 0 results for \" " + $('#search').val() + " \"</th><th></th><th></th></tr>");    
-            }, 300 );
-        }                   
+        delay(function(){
+            var $searchLen = $('#search').val().length;
+            if ( $searchLen > 2 ) {
+                $('#search-form').submit();
+            } else if ( $searchLen === 0 ) {
+                clearSearch();   
+            } else if ( $searchLen === 1 || $searchLen === 2 ) {
+                    $('#search-results').html("<tr><th>Showing 0 results for \" " + $('#search').val() + " \"</th><th></th><th></th></tr>");
+            }     
+        }, 200);
     });   
     
     $('#clear-search').click(function() {
