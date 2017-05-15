@@ -204,3 +204,25 @@ input#task_expires_at {
 //     text-align: center;
 //     color: #7d7153;
 // }
+
+
+// DEVISE VIEWS 
+
+div.devise-container {
+    width: 80%;
+    margin: auto;
+    border: 3px solid grey;
+    border-radius: 6%;
+    text-align: center;
+    color: #586471;
+    background-color: rgba(142, 142, 142, 0.4);
+    
+    & a {
+        color: #6888ae;
+    }
+    
+    & form input.devise-field {
+        width: 40%;
+        margin: auto;
+    }
+}
