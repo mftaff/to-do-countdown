@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.jumbotron.about {
+div.landing-about {
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(142, 142, 142, 0.5);
+    min-height: 200px;
+    margin: auto;
+    border: 2px solid #bbdafd;
+    border-radius: 5%;
+    background-color: rgba(147, 169, 186, 0.4);
     text-align: center;
+    
+    & .text-body {
+        text-align: left;
+        width: 50%;
+        margin: auto;
+        
+        & p {
+            font-size: 1.2em;
+        }
+    }
 }
