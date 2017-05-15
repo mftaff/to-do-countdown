@@ -114,16 +114,18 @@ div#toggle-expired:hover, div#toggle-expired:focus {
     }
 }
 
-#heading, .new-task {
-    background-color: rgba(123, 161, 191, 0.5);
-}
-
-.task:nth-child(even) {
-    background-color: rgba(175, 175, 175, 0.3);
-}
-
 tbody {
     
+    
+    // task table
+    & tr#heading, tr.new-task {
+        background-color: rgba(123, 161, 191, 0.5);
+    }
+    
+    & tr.task:nth-child(even) {
+        background-color: rgba(175, 175, 175, 0.3);
+    }
+
     & tr.task:hover {
         background-color: transparent;
     }
@@ -140,13 +142,33 @@ tbody {
         opacity: 0.8;
     }
     
-    &#expired-tasks {
+    &#expired-tasks, &#search-results {
         border-top: 6px double #8cb2d0;
+    }
+    
+    
+    // friend table
+    & tr.user td a {
+        color: #5f788c;
+    } 
+    
+    & tr.user:hover {
+        background-color: rgba(255, 255, 255, .1);
+    } 
+    
+    & tr.search-message {
+        border-bottom: 1px dotted #8cb2d0;
+    }
+    
+    & tr.search-message:hover {
+        background-color: transparent;
     }
 }
 
 th {
     
+    
+    // task table
     &.task-desc {
         width: 70%;    
     }
@@ -158,6 +180,21 @@ th {
     
     &.compl-yet {
         width: 10%;
+    }
+    
+    
+    //friend table
+    &.peop-col-1 {
+        width: 45%;    
+    }
+    
+    &.view-col-2 {
+        width: 20%; 
+        text-align: center;
+    }
+    
+    &.stts-col-3 {
+        width: 35%;
     }
 }
 
@@ -204,6 +241,33 @@ input#task_expires_at {
 //     text-align: center;
 //     color: #7d7153;
 // }
+
+
+// Friend Searchbar
+div.friend-search {
+    margin-left: 1em;
+    
+    & form {
+        
+        & input.search-field {
+            width: 40%;
+            float: left;
+        }
+        
+        & input.search-submit {
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+        
+        & a.search-clear {
+            color: #056500;
+        }
+    }
+}
+
+h5.friends-heading {
+    margin-left: 1em;
+}
 
 
 // DEVISE VIEWS 

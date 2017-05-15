@@ -1,10 +1,10 @@
 <% users.each do |user| %>
     <% if user != current_user %>
-        <tr>
+        <tr class="user">
             <td><%= user.username %></td>
             <td>
                 <% if current_user.friends.include? user %>
-                    <%= link_to "View To-Do's", user %>
+                    <%= link_to "Checkout To-Do", user %>
                 <% end %>
             </td>
             <td><%= render partial: 'users/friend_status', locals: {user: user} %></td>

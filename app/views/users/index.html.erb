@@ -1,16 +1,17 @@
-<h4>Manage Friends</h4>
-<div>
+<h5 class="friends-heading">Manage all your Friends here</h5>
+
+<div class="friend-search">
     <%= form_tag(users_path, method: "get", id: "search-form", remote: true) do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Find new friends" %>
-            <%= submit_tag "search", name: nil %>
-            <%= link_to "Clear", "#", id: "clear-search" %>
+            <%= text_field_tag :search, params[:search], placeholder: "Find new friends...", class: 'form-control search-field' %>
+            <%= submit_tag "search", name: nil, class: 'btn btn-default btn-sm search-submit' %>
+            <%= link_to "Clear", "#", id: "clear-search", class: 'search-clear' %>
     <% end %>
 </div>
 <table class="table table-hover">
     <tr id="heading">
-        <th>All People</th>
-        <th></th>
-        <th>Friend Status</th>
+        <th class="col-md-5 peop-col-1">Friends</th>
+        <th class="col-md-3 view-col-2"></th>
+        <th class="col-md-4 stts-col-3">Status</th>
     </tr>
     <%= render partial: 'index', locals: { users: @friends } %> 
     <tbody id="search-results"></tbody>
