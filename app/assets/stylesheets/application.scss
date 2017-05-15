@@ -185,7 +185,7 @@ th {
     
     //friend table
     &.peop-col-1 {
-        width: 45%;    
+        width: 42%;    
     }
     
     &.view-col-2 {
@@ -194,7 +194,7 @@ th {
     }
     
     &.stts-col-3 {
-        width: 35%;
+        width: 38%;
     }
 }
 
@@ -288,5 +288,20 @@ div.devise-container {
     & form input.devise-field {
         width: 40%;
         margin: auto;
+    }
+    
+    & #error_explanation {
+        background-color: rgba(255, 0, 0, .1);
+        text-align: left;
+        width: 50%;
+        margin: auto;
+        padding: 0px 10px;
+        border: 1px solid rgba(255, 0, 0, .2);
+        border-radius: 5%;
+        margin-bottom: 1em;
+        
+        & h2 {
+            text-align: center;
+        }
     }
 }

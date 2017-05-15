@@ -1,12 +1,12 @@
 <% if current_user.friends.include? user %>
-    <%= link_to "unfriend", unfriend_path(target_user: user) %>
+    <%= link_to "Unfriend", unfriend_path(target_user: user) %>
 <% elsif current_user.requested_friends.include? user %>
-    wants to be your friend <  
+    Wants to be your friend:   
     <%= link_to "accept", accept_friend_request_path(target_user: user) %> - 
-    <%= link_to "decline", decline_friend_request_path(target_user: user) %> >
+    <%= link_to "decline", decline_friend_request_path(target_user: user) %>
 <% elsif current_user.pending_friends.include? user %>
     Friend requst sent! 
     <%= link_to "retract?", unfriend_path(target_user: user) %>
 <% else %>
-    <%= link_to "send friend request", send_friend_request_path(target_user: user) %> 
+    <%= link_to "Send friend request", send_friend_request_path(target_user: user) %> 
 <% end %>

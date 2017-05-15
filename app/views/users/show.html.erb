@@ -2,7 +2,7 @@
 
 <table class="table table-hover">
     <tr id="heading">
-        <th class="col-md-6 task-desc" id="task-count">You have <%= pluralize(@tasks.count, "Task").split.insert(1, "active").join ' ' %></th>
+        <th class="col-md-6 task-desc" id="task-count"><%= subject_parse(@user) %><%= pluralize(@tasks.count, "Task").split.insert(1, "active").join ' ' %></th>
         <th class="col-md-4 time-rema">Time remaining</th>
         <% if @user == current_user %>
             <th class="col-md-2 compl-yet">Complete?</th>

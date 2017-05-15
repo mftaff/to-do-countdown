@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :set_body_class, only: [:index]
   
   def index
-    @friends = User.all.map { |user| !isnt_friend(user) ? user : nil }.compact
+    @friends = User.all.map { |user| user != current_user && associated_with(user) ? user : nil }.compact
     
     if params[:search].present? && params[:search].length >= 3
-      @searched_users = User.search(params[:search]).map { |user| isnt_friend(user) ? user : nil }.compact
+      @searched_users = User.search(params[:search]).map { |user| user == current_user || associated_with(user) ? nil : user }.compact
 
       if @searched_users
         flash.now[:notice] = "Showing #{@searched_users.count} #{"result".pluralize(@searched_users.count)} for \" #{params[:search]} \""
@@ -66,8 +66,8 @@ class UsersController < ApplicationController
   end
   
   # returns true if user is not a pending/requested or friend of current_user
-  def isnt_friend(user)
-    current_user.friends.include?(user) || current_user.requested_friends.include?(user) || current_user.pending_friends.include?(user) || current_user == user ? false : true
+  def associated_with(user)
+    current_user.friends.include?(user) || current_user.requested_friends.include?(user) || current_user.pending_friends.include?(user)
   end
   
   def set_body_class

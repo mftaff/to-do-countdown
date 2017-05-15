@@ -13,6 +13,15 @@
         <th class="col-md-3 view-col-2"></th>
         <th class="col-md-4 stts-col-3">Status</th>
     </tr>
-    <%= render partial: 'index', locals: { users: @friends } %> 
+    <% if @friends.present? %>
+        <% log_info @friends.length %>
+        <%= render partial: 'index', locals: { users: @friends } %> 
+    <% else %>
+        <tr class="user">
+            <td>You have no connections yet!</td>
+            <td></td>
+            <td></td>
+        </tr>
+    <% end %>
     <tbody id="search-results"></tbody>
 </table>

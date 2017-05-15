@@ -4,7 +4,7 @@
             <%= f.text_field :name, class: 'form-control', placeholder: "Add new task..." %>
         </td>
         <td class="form-group">
-            <%= f.date_field :expires_at, max: Time.now + 7.days, min: Time.now + 1.day %>
+            <%= f.date_field :expires_at, max: Time.now + 7.days, min: Time.now + 1.day, value: (Date.current+7.days).strftime('%Y-%m-%d') %>
         </td>
         <td class="form-group">
             <%= f.submit "Save", class: 'btn btn-success' %>
