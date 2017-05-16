@@ -2,7 +2,8 @@ class TasksController < ApplicationController
     def create
         expires_at_format unless params[:task][:expires_at].blank? # adds the current time to a user created date
         
-        @task = current_user.tasks.new(task_params)
+        @task = current_user.lists.find(params[:task][:current_list_id]).tasks.new(task_params)
+        @task.user = current_user
 
         if @task.save
             flash.now[:notice] = "\"#{@task.name}\" added to To-Do list!"

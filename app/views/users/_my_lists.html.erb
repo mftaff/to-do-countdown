@@ -1,0 +1,7 @@
+<% lists.each do |list| %>
+    <% if list == current_list %>
+        <div class="lists visible-list"><%= list.title %></div>
+    <% else %>
+        <%= link_to "#{list.title}", root_path( list_id: list, id: params[:id] ), class: "lists hidden-lists", id: "list-#{list.id}" %>
+    <% end %>
+<% end %>

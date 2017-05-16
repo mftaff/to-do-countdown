@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   def show
     @task = Task.new
     @user = params[:id].present? ? User.find(params[:id]) : current_user
+    log_info @user.inspect
+    @lists = @user.lists
+    log_info @lists.inspect
+    @list = params[:list_id].present? ? @lists.find(params[:list_id]) : @lists.first
 
     unless current_user.friends.include?(@user) || @user == current_user
       flash[:alert] = "You need to be friends to view other peoples's TO-DO lists.."
@@ -31,8 +35,8 @@ class UsersController < ApplicationController
       end
     end
     
-    @tasks = @user.tasks.unexpired
-    @expired_tasks = @user.tasks.expired
+    @tasks = @list.tasks.unexpired
+    @expired_tasks = @list.tasks.expired
   end
   
   def send_friend_request # send a request to a diff user

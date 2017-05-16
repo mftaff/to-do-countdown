@@ -1,3 +1,7 @@
+<div class="list-toggle">
+    <%= render partial: 'my_lists', locals: { lists: @lists, current_list: @list } %>
+</div>
+
 <%= expired_task_button %>
 
 <table class="table table-hover">
@@ -11,6 +15,6 @@
     <tbody class="all-tasks"><%= render @tasks %></tbody>
     <tbody class="collapse" id="expired-tasks"><%= render @expired_tasks %></tbody>
     <% if @user == current_user %>
-        <%= render partial: 'tasks/form', locals: { task: @task } %>
+        <%= render partial: 'tasks/form', locals: { task: @task, current_list: @list } %>
     <% end %>
 </table>

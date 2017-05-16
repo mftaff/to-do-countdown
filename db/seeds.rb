@@ -11,6 +11,17 @@
     user.save!
 end
 
+2.times do
+    user = User.new(
+        username: Faker::Name.first_name.downcase + rand(100..999).to_s,
+        email: Faker::Internet.safe_email,
+        password: 'teatea',
+        password_confirmation: 'teatea'
+    )
+    user.skip_confirmation!
+    user.save!
+end
+
 admin_user = User.new(
         username: "admin_user",
         email: 'admin@user.test',
@@ -22,26 +33,40 @@ admin_user.save!
 
 users = User.all
 
-50.times do 
-    task = Task.create!(
-        name: Faker::Company.bs,
+list_titles = ["To-Do", "Groceries", "Daily Tasks", "On the way home", "TO DO", "For Work", "Vacation Checklist"]
+
+17.times do
+    list = List.create(
+        title: list_titles.sample,
         user: users.sample
     )
-    task.update_attribute(:expires_at, Time.now + rand(1.day .. 7.days))
+    
+    rand(4..10).times do
+        Task.create!(
+            name: Faker::Company.bs,
+            user: list.user,
+            list: list,
+            expires_at: Time.now + rand(1.day .. 7.days)
+        )
+    end
 end
 
-ten_min_task = Task.create!(
+Task.create!(
     name: "Should be ten minutes remaining",
-    user: User.last
-    )
-ten_min_task.update_attribute(:expires_at, Time.now+10.minutes)
+    user: User.last,
+    list: User.last.lists.first,
+    expires_at: Time.now + 10.minutes
+)
 
-expired_test_task = Task.create!(
+Task.create!(
     name: "I am already expired!!",
-    user: User.last
-    )
-expired_test_task.update_attribute(:expires_at, Time.now)
+    user: User.last,
+    list: User.last.lists.first,
+    expires_at: Time.now
+)
+
 
 puts "Seed Complete"
 puts "#{User.count} users created"
+puts "#{List.count} lists created"
 puts "#{Task.count} tasks created"

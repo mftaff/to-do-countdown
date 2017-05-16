@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :index]
   resources :tasks, only: [:create, :destroy]
+  resources :lists, only: [:index, :create, :destroy]
   
   get 'send_friend_request', to: 'users#send_friend_request'
   get 'accept_friend_request', to: 'users#accept_friend_request'

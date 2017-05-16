@@ -1,0 +1,10 @@
+<%= form_for [list] do |f| %>
+    <div class="new-list">
+        <div class="form-group">
+            <%= f.text_field :title, class: 'form-control', placeholder: "New List's Title..." %>
+        </div>
+        <div class="form-group">
+            <%= f.submit "Save", class: 'btn btn-success' %>
+        </div>
+    </div>
+<% end %>

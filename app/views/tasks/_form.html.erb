@@ -7,6 +7,7 @@
             <%= f.date_field :expires_at, max: Time.now + 7.days, min: Time.now + 1.day, value: (Date.current+7.days).strftime('%Y-%m-%d') %>
         </td>
         <td class="form-group">
+            <%= f.hidden_field :current_list_id, value: current_list.id %>
             <%= f.submit "Save", class: 'btn btn-success' %>
         </td>
     </tr>
