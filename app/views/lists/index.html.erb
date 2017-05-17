@@ -1,4 +1,11 @@
-<h5>My To-Do lists:</h5>
+<div class="lists-container">
+    <h2>My Task Lists</h2>
 
-<%= render partial: 'index', locals: { lists: @lists } %>
-<%= render partial: 'form', locals: { list: @list } %>
+    <table class="lists">
+        <%= render partial: 'index', locals: { lists: @lists } %>
+        
+        <tr class="new-list">
+            <%= render partial: 'form', locals: { list: @list } %>
+        </tr>
+    </table>
+</div>

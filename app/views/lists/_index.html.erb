@@ -1,6 +1,6 @@
 <% lists.each do |list| %>
-    <div>
-        <%= list.title %> 
-        <%= link_to "Delete list", list, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Deleting \"#{list.title}\" will delete all it's Tasks as well.\nAre you sure you want to do this?" } %>
-    </div>
+    <tr class="list-row">
+        <td class="list"><%= link_to "#{list.title}", root_path( list_id: list, id: params[:id] ) %></td> 
+        <td><%= link_to "Delete list", list, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: "Deleting \"#{list.title}\" will delete all it's Tasks as well.\nAre you sure you want to do this?" } %></td>
+    </tr>
 <% end %>

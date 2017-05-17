@@ -21,9 +21,8 @@ class UsersController < ApplicationController
   def show
     @task = Task.new
     @user = params[:id].present? ? User.find(params[:id]) : current_user
-    log_info @user.inspect
+
     @lists = @user.lists
-    log_info @lists.inspect
     @list = params[:list_id].present? ? @lists.find(params[:list_id]) : @lists.first
 
     unless current_user.friends.include?(@user) || @user == current_user

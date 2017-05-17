@@ -77,14 +77,22 @@ ul.dropdown-menu.menu-list {
     border-top: none;
 }
 
-// Find a way to save the flash box's space, so the whole page doesn't jump.
 .flash {
+    min-height: 70px;
+    
+    .alert {
+        margin-bottom: 0;
+    }
 }
 
 header {
     color: #7d7153;
     text-align: center;
     background-color: rgba(142, 142, 142, 0.6);
+}
+
+div.expired-task-toggle {
+    min-height: 16.8px;
 }
 
 div#toggle-expired {
@@ -245,10 +253,28 @@ input#task_expires_at {
 
 // Lists View Toggle
 div.list-toggle {
-    display: -webkit-inline-box;  
-    display: inline-flex;
+    text-align: center;
+    background-color: rgba(146, 169, 187, 0.3);
+    color: #4c7392;
     
-
+    & .lists {
+        padding: 0px 5px;
+    }
+    
+    .visible-list {
+        font-size: 2em;
+        display: inline;
+    }
+    
+    .hidden-lists {
+        font-size: 1.2em;
+        color: #6d8aa0;
+    }
+    
+    .hidden-lists:hover {
+        text-decoration: none;
+        color: #4c7392;
+    }
 }
 
 
@@ -276,6 +302,62 @@ div.friend-search {
 
 h5.friends-heading {
     margin-left: 1em;
+}
+
+
+// My Lists
+div.lists-container {
+    width: 80%;
+    margin: auto;
+    border: 3px solid grey;
+    border-radius: 6%;
+    text-align: center;
+    color: #586471;
+    background-color: rgba(142, 142, 142, 0.4);
+    
+    & .lists {
+        margin: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        background-color: rgba(176, 196, 222, .5);
+        border: 3px solid grey;
+        border-collapse:separate;
+        border-radius:6px;
+    }
+    
+    & .list-row:nth-child(even) .list a {
+        color: #323b43;
+        
+        &:hover {
+            color: #388ccf;
+        }
+    }
+    
+    & .list {
+        text-align: left;
+        font-size: 16px;
+        padding-left: 30px;
+        
+        & a {
+           color: #647689; 
+        }
+        
+        & a:hover {
+            color: #388ccf;
+        }
+    }
+        
+    & td {
+        padding: 5px 9px;
+    }
+    
+    // & tr:nth-child(even) {
+    //     background-color: rgba(176, 196, 222, .7);
+    // }
+    
+    & .new-list .title-field {
+        width: 90%;
+    }
 }
 
 

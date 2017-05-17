@@ -2,7 +2,9 @@
     <%= render partial: 'my_lists', locals: { lists: @lists, current_list: @list } %>
 </div>
 
-<%= expired_task_button %>
+<div class="expired-task-toggle">
+    <%= expired_task_button %>
+</div>
 
 <table class="table table-hover">
     <tr id="heading">
