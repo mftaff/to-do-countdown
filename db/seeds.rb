@@ -1,9 +1,11 @@
 4.times do
     seed_name = Faker::Name.first_name.downcase + rand(100..999).to_s
+    seed_email = Faker::Internet.safe_email(seed_name)
 
     user = User.new(
         username: seed_name,
-        email: Faker::Internet.safe_email(seed_name),
+        email: seed_email,
+        email_name: "",
         password: 'teatea',
         password_confirmation: 'teatea'
     )
@@ -12,9 +14,12 @@
 end
 
 2.times do
+    seed_email = Faker::Internet.safe_email
+    
     user = User.new(
         username: Faker::Name.first_name.downcase + rand(100..999).to_s,
-        email: Faker::Internet.safe_email,
+        email: seed_email,
+        email_name: "",
         password: 'teatea',
         password_confirmation: 'teatea'
     )
@@ -25,6 +30,7 @@ end
 admin_user = User.new(
         username: "admin_user",
         email: 'admin@user.test',
+        email_name: 'admin',
         password: 'teatea',
         password_confirmation: 'teatea'
     )
@@ -65,6 +71,9 @@ Task.create!(
     expires_at: Time.now
 )
 
+# Create a friendship between last and first user
+User.last.friend_request(User.first)
+User.first.accept_request(User.last)
 
 puts "Seed Complete"
 puts "#{User.count} users created"

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :lists, dependent: :destroy
   has_friendship
   
+  before_save :update_email_name
+  
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
@@ -32,8 +34,12 @@ class User < ActiveRecord::Base
     end
   end
   
+  def update_email_name
+    self.email_name = "#{self.email.split('@').first}"
+  end
+  
   # gives this model search functionality
   def self.search(search)
-    where("username LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
+    where("username LIKE ? OR email_name LIKE ?", "%#{search}%", "%#{search}%")
   end
 end
