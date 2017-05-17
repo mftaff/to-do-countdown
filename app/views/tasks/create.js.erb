@@ -1,10 +1,21 @@
 <% if @task.valid? %>
+    var slotFound = false; 
+    var $taskDate = "<%= @task.expires_at %>".split(" ");
+    var taskDate = new Date($taskDate[0] + "T" + $taskDate[1] + "Z");
+    
     $('.task').children('.expires_at').each(function(){ 
-        if ($(this).text() <= "<%= @task.expires_at.to_s %>") {
+        var $thisDate = $(this).text().split(" ");
+        var thisDate = new Date($thisDate[0] + "T" + $thisDate[1] + "Z");
+        
+        if ( thisDate.getTime() <= taskDate.getTime() ) {
             $(this).parent().before("<%= escape_javascript(render(@task)) %>");
+            slotFound = true;
             return false;
         } 
-    }); 
+    });
+    if (!slotFound) {
+        $("tbody.all-tasks").append("<%= escape_javascript(render(@task)) %>");
+    }
     $('#task_name').val("");
     $('th#task-count').html("You have <%= pluralize(@task.list.tasks.unexpired.count, "Task").split.insert(1, "active").join ' ' %>");
     $(".flash").html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:notice] %></div>");
