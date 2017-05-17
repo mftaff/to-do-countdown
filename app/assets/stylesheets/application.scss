@@ -302,6 +302,7 @@ div.friend-search {
 
 h5.friends-heading {
     margin-left: 1em;
+    font-size: 1.4em;
 }
 
 
@@ -350,10 +351,6 @@ div.lists-container {
     & td {
         padding: 5px 9px;
     }
-    
-    // & tr:nth-child(even) {
-    //     background-color: rgba(176, 196, 222, .7);
-    // }
     
     & .new-list .title-field {
         width: 90%;

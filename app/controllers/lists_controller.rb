@@ -8,12 +8,12 @@ class ListsController < ApplicationController
         @list = current_user.lists.new(list_params)
 
         if @list.save
-            flash.now[:notice] = "New To-Do created: \"#{@list.title}\"!"
+            flash[:notice] = "New To-Do created: \"#{@list.title}\"!"
         else
-            if @task.errors.any?
-                flash.now[:alert] = "List not created. #{@task.errors.full_messages.join '. ' }."  
+            if @list.errors.any?
+                flash[:alert] = "OH NO! #{@list.errors.full_messages.join '. ' }."  
             else
-                flash.now[:alert] = "Something went wrong! Your list wasn't created... "
+                flash[:alert] = "Something went wrong! Your list wasn't created... "
             end
         end
         redirect_to lists_path
@@ -27,9 +27,9 @@ class ListsController < ApplicationController
         @list = List.find(params[:id])
         
         if @list.destroy
-            flash.now[:notice] = "To-Do list successfully deleted."
+            flash[:notice] = "To-Do list successfully deleted."
         else 
-            flash.now[:alert] = "An issue occured while trying to delete To-Do lis..."
+            flash[:alert] = "An issue occured while trying to delete To-Do lis..."
         end
         redirect_to lists_path
         # respond_to do |format|
