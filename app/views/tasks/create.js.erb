@@ -1,13 +1,9 @@
 <% if @task.valid? %>
     var slotFound = false; 
-    var $taskDate = "<%= @task.expires_at %>".split(" ");
-    var taskDate = new Date($taskDate[0] + "T" + $taskDate[1] + "Z");
+    var taskDate = "<%= @task.expires_at %>";
     
     $('.task').children('.expires_at').each(function(){ 
-        var $thisDate = $(this).text().split(" ");
-        var thisDate = new Date($thisDate[0] + "T" + $thisDate[1] + "Z");
-        
-        if ( thisDate.getTime() <= taskDate.getTime() ) {
+        if ( $(this).text() <= taskDate ) {
             $(this).parent().before("<%= escape_javascript(render(@task)) %>");
             slotFound = true;
             return false;
